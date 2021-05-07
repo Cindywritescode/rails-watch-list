@@ -1,6 +1,15 @@
-<h1><%= @list.name %></h1> 
+<%# banner %>
 
-<%= link_to '+ Add a movie', new_list_bookmark_path(@list) %>
+<div class="list-page-banner" style="background-image: url('<%= image_path "list_background.jpg", alt: "hero image" %>'); " >
+  <strong><h1><%= @list.name %></h1> </strong>
+  <p><%= link_to '+ Add a movie', new_list_bookmark_path(@list) %></p>
+     
+</div>
+<%# banner END %>
+
+
+<%# <h1><%= @list.name %></h1>  
+
 <br>
 <hr>
 
@@ -19,23 +28,22 @@
 
 <h4><strong>Reviews</strong></h4>
 <% @list.reviews.each do |review| %>
-
-<ol>
-     <li><%= review.comment %> <%= '⭐️' * review.rating %>
+<ul>
+     <li>
+     <%= review.comment %> <%= '⭐️' * review.rating %>
      </li>
-</ol>
-
+</ul>
 <% end %>
 <br>
 <hr>
 <h5>Add your review</h5>
 <%= simple_form_for [@list, @review] do |f| %>
-     <%= f.input :comment %>
-     <%= f.input :rating %>
+     <%= f.input :comment, placeholder: 'Add your review here'  %>
+     <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { id: 'review_rating' }  %>
      <%= f.submit %>
 <% end %>
 
 <br>
 <%= link_to 'Delete this list', list_path(@list), method: :delete, data: { confirm: 'Are you sure?'}  %>
-<br>
-<%= link_to 'Home', root_path %>
+
+<%# <%= link_to 'Home', root_path %>
