@@ -16,8 +16,11 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.save
-    redirect_to list_path(@list)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -26,12 +29,13 @@ class ListsController < ApplicationController
   end
 
   private
-  def list_params
-    params.require(:list).permit(:name)
-  end
-
+  
   def find_list
     @list = List.find(params[:id])
+  end
+  
+  def list_params
+    params.require(:list).permit(:name)
   end
 
 end

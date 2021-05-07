@@ -1,7 +1,18 @@
-<h3>Add a movie to your <strong><%= @list.name %></strong> list </h3>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
-  <%= f.association :movie, placeholder:'Select a movie'  %>
-  <%= f.submit %>
-<% end %>
+        <h3 class="text-uppercase">Add a movie to your <strong><%= @list.name %></strong> list </h3>
+
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
+          <%= f.association :movie, placeholder:'Select a movie'  %>
+          <%= f.submit class: 'btn btn-primary'%>
+        <% end %>
+
+        </div>
+    </div>
+  </div>
+</div>
+

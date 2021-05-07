@@ -1,5 +1,4 @@
 <%# banner %>
-
 <div class="home-banner" style="background-image: url('<%= image_path "cover.jpg", alt: "hero image" %>'); " >
   <strong><h1>Save Any Movie You Like</h1></strong>
   <p>
@@ -19,53 +18,68 @@
 
 
 <div class="container ">
-<br>
-  <h3 class="text-center">All Movie Lists</h3>
-  <p class="text-center"><%= link_to '+ add new list', new_list_path %></p>
+  <br>
+    <h3 class="text-center">All Movie Lists</h3>
+    <p class="text-center"><%= link_to '+ add new list', new_list_path %></p>
 
-<br>
-
-<div class="row ">
-  <% @lists.each do |list| %>
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://picsum.photos/id/16/300/200" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
-      </div>
+  <br>
+  <%# Card %>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://picsum.photos/id/16/300/200" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
+        </div>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+  <%# Card END %>
 
-<br>
+  <br>
 
-<%# Modal %>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+  <%# Modal %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
 
 
 </div>
+
+<br><br>
+<%# Footer %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This site is made with <i class="fas fa-heart"></i> from Cindy
+  </div>
+</div>
+<%# Footer END %>
