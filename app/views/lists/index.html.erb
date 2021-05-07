@@ -21,10 +21,9 @@
 <div class="container ">
   <br>
     <h3 class="text-center">All Movie Lists</h3>
-    <p class="text-center"><%= link_to '+ add new list', new_list_path %></p>
-
   <br>
-  <%# Card %>
+
+  <%# list Card %>
   <div class="row">
     <% @lists.each do |list| %>
       <div class="card" style="width: 18rem;">
@@ -35,15 +34,15 @@
     </div>
     <% end %>
   </div>
-  <%# Card END %>
+  <%# list Card END %>
 
   <br>
 
-  <!-- Button: add list -->
-  <button type="button" class="btn btn-primary text-white">
-    <%= link_to '+ add new list', new_list_path %>
+  <!-- Button: add new list -->
+  <button type="button" class="btn btn-primary ">
+    <%= link_to '+ add a new list', new_list_path, class: "text-white" %>
   </button>
-  <!-- Button: add list END -->
+  <!-- Button: add new list END -->
 
 </div>
 
