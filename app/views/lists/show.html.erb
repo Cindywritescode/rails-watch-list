@@ -1,17 +1,14 @@
 <%# banner %>
-
 <div class="list-page-banner" style="background-image: url('<%= image_path "list_background.jpg", alt: "hero image" %>'); " >
   <strong><h1><%= @list.name %></h1> </strong>
   <p><%= link_to '+ Add a movie', new_list_bookmark_path(@list) %></p>
      
 </div>
 <%# banner END %>
-
-
-<%# <h1><%= @list.name %></h1>  
-
 <br>
 <hr>
+
+<div class="container">
 
 <% @list.movies.each do |movie| %>
  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
@@ -26,6 +23,7 @@
  <hr>
 <% end %>
 
+<%# Reviews %>
 <h4><strong>Reviews</strong></h4>
 <% @list.reviews.each do |review| %>
 <ul>
@@ -34,8 +32,12 @@
      </li>
 </ul>
 <% end %>
+<%# Review END %>
 <br>
 <hr>
+
+
+<%# Review form %>
 <h5>Add your review</h5>
 <%= simple_form_for [@list, @review] do |f| %>
      <%= f.input :comment, placeholder: 'Add your review here'  %>
@@ -44,6 +46,36 @@
 <% end %>
 
 <br>
-<%= link_to 'Delete this list', list_path(@list), method: :delete, data: { confirm: 'Are you sure?'}  %>
+<%# Review form END %>
 
-<%# <%= link_to 'Home', root_path %>
+
+  <%# Modal -- Delete %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary text-white" data-toggle="modal" data-target="#exampleModal">
+   Delete this list <%= link_to '', list_path(@list), method: :delete, data: { confirm: 'Are you sure?'}  %>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete this list</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the <%= @list.name %> list ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%# Modal END %>
+
+
+</div>
