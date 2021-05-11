@@ -5,27 +5,35 @@
 </div>
 <%# banner END %>
 <br>
-<hr>
+
 
 <div class="container">
 
 
-<%# Movies %>
-<% @list.movies.each do |movie| %>
- <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
- <h3><%= movie.title %></h3>
- <p><%= movie.overview %></p>
- <p>"<i><%= bookmark.comment %></i>"</p>
+<%# Movie cards %>
+<div class="row no-gutters">
+  <% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <div class="col-sm-12 col-md-6 col-lg-4 p-2">   
+      <div class="card">
+        <img class="card-img-top" src="https://picsum.photos/id/16/300/200" alt="Card image cap">
+        <div class="card-body">
+          <h3><%= movie.title %></h3>
+          <p><%= movie.overview %></p>
+          <p>"<i><%= bookmark.comment %></i>"</p>
 
- <%= link_to 'delete', bookmark_path(bookmark), 
-      method: :delete, 
-      data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, 
-      class: 'text-danger' %>
- <hr>
-<% end %>
-<%# Movies END %>
+          <%= link_to 'delete', bookmark_path(bookmark), 
+          method: :delete, 
+          data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, 
+          class: 'text-danger' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<%# Movie cards END %>
 
-
+<hr>
 <%# Reviews %>
 <h4><strong>Reviews</strong></h4>
 <% @list.reviews.each do |review| %>
