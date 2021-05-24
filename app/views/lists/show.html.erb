@@ -1,5 +1,5 @@
 <%# banner %>
-<div class="list-page-banner" style="background-image: url('<%= image_path "list_background.jpg", alt: "hero image" %>'); " >
+<div class="list-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url('<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : asset_path('list_background.jpg') %>'); " >
   <strong><h1><%= @list.name %></h1> </strong>
   <p><%= link_to '+ Add a movie', new_list_bookmark_path(@list) %></p>
 </div>
@@ -34,67 +34,52 @@
 <%# Movie cards END %>
 
 <hr>
-<%# Reviews %>
-<h4><strong>Reviews</strong></h4>
-<% @list.reviews.each do |review| %>
-<ul>
-     <li>
-     <%= review.comment %> <%= '⭐️' * review.rating %>
-     </li>
-</ul>
-<% end %>
-<%# Reviews END %>
-<br>
-<hr>
 
-
-<%# Review form %>
 <div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
+  <div class="d-flex justify-content-between">
+    <%# Reviews %>
+    <div>
+      <h4><strong>Reviews</strong></h4>
+      <% @list.reviews.each do |review| %>
+        <ul>
+          <li>
+          <%= review.comment %> <%= '⭐️' * review.rating %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+    <%# Reviews END %>
 
+    <%# Review form %>
+    <div>
+      <div class="bg-light p-3 shadow card-rounded">
         <h5>Add your review</h5>
         <%= simple_form_for [@list, @review] do |f| %>
             <%= f.input :comment, placeholder: 'Add your review here'  %>
             <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { id: 'review_rating' }  %>
-            <%= f.submit class: 'btn btn-primary' %>
+            <%= f.submit class: 'btn btn-primary form-btn-rounded' %>
         <% end %>
 
       </div>
     </div>
   </div>
 </div>
+<hr>
 <%# Review form END %>
 
 
   <%# Modal -- Delete %>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary text-white" data-toggle="modal" data-target="#exampleModal">
-   Delete this list <%= link_to '', list_path(@list), method: :delete, data: { confirm: 'Are you sure?'}  %>
-  </button>
+  <%= link_to 'Delete this list', list_path(@list), 
+  method: :delete, 
+  data: { confirm: "Are you sure you want to delete #{@list.name.upcase} list?"}, 
+  class:'btn btn-primary text-white'  %>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete this list</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete the <%= @list.name %> list ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%# Modal END %>
-<br><br>
 
+
+  
+
+
+<br>
+<br>
 </div>
