@@ -1,7 +1,8 @@
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fix-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fix-top">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "popcorn.png" %>
-    <% end %>
+  <%= image_tag "popcorn.png" %>
+  <% end %>
+    
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,13 +14,13 @@
         <%= link_to "Home", root_path , class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "All Lists", "#", class: "nav-link" %>
+        <%= link_to "Login", "#", class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
         <%= image_tag "profile.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Action", "#", class: "dropdown-item" %>
-          <%= link_to "Another action", "#", class: "dropdown-item" %>
+          <%= link_to "All lists", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", "#", class: "dropdown-item" %>
         </div>
       </li>
     </ul>

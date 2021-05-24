@@ -22,5 +22,11 @@ puts 'create list'
 # List.create(name:"Comedy")
 # List.create(name:"Drama")
 
+require "open-uri"
+
+file = URI.open('https://res.cloudinary.com/cindyscloudinary/image/upload/v1621889855/4ikfydnxonoq6kh7ztluw7r4so1n.jpg')
+list = List.new(name: 'Taiwanese Classic')
+list.photo.attach(io: file, filename: 'annlee_movies.png', content_type: 'image/jpg')
+list.save
 
 puts 'done'
