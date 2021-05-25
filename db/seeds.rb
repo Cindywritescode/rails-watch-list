@@ -16,10 +16,9 @@ Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells
 Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
 
 puts 'create list'
-# List.create(name:"Action")
+List.create(name:"Action")
 # List.create(name:"Romance")
-# List.create(name:"Action")
-# List.create(name:"Comedy")
+List.create(name:"Comedy")
 # List.create(name:"Drama")
 
 require "open-uri"
