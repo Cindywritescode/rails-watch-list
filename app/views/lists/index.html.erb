@@ -18,51 +18,38 @@
 <%# Text section END %>
 
 
-<div class="container ">
+<div class="container m-auto ">
   <br>
     <h3 class="text-center">All Lists</h3>
   <br>
 
   <%# list Card %>
-  <div class="row no-gutters">
+  <div class="row">
     <% @lists.each do |list| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 p-2">   
-      <div class="card">
-        <img class="card-img-top" src="https://picsum.photos/id/16/300/200" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
-        </div>
+      <div class="co-12 colsm-6 col-md-4 p-2">   
+        <%= link_to list_path(list), class:'text-decoration-none' do %>
+          <div class="card-category" data-aos="zoom-in" style="background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('list_background.jpg') %>)" >
+            <%= list.name %>
+          </div>
+        <% end %>
       </div>
-    </div>
     <% end %>
   </div>
   <%# list Card END %>
 
 
-
   <br>
+
+
 
   <!-- Button: add new list -->
   <button type="button" class="btn btn-primary ">
     <%= link_to '+ add a new list', new_list_path, class: "text-white" %>
   </button>
+
   <!-- Button: add new list END -->
 
 </div>
 
 
 <br><br>
-<%# Footer %>
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This site is made with <i class="fas fa-heart"></i> from Cindy
-  </div>
-</div>
-<%# Footer END %>
