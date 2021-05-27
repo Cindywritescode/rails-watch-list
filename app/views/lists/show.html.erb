@@ -16,7 +16,6 @@
     <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
       <div class="col-sm-12 col-md-6 col-lg-4 p-2">   
         <div class="card">
-          <%# <img class="card-img-top" src="https://picsum.photos/id/16/300/200" alt="Card image cap"> %>
           <%= image_tag movie.poster_url, alt: movie.title, class: 'card-img-top movie-img rounded-top' %>
           <div class="card-body">
             <h3><%= movie.title %></h3>
